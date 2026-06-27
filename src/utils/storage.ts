@@ -32,15 +32,19 @@ export function clearHistory(): void {
 
 export function getSettings(): AppSettings {
   if (typeof window === 'undefined') {
-    return { theme: 'system', favorites: [], recentCalculators: [] };
+    return { favorites: [], recentCalculators: [] };
   }
   try {
     const raw = localStorage.getItem(SETTINGS_KEY);
-    return raw
-      ? JSON.parse(raw)
-      : { theme: 'system', favorites: [], recentCalculators: [] };
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      // Remove theme if present
+      delete parsed.theme;
+      return parsed;
+    }
+    return { favorites: [], recentCalculators: [] };
   } catch {
-    return { theme: 'system', favorites: [], recentCalculators: [] };
+    return { favorites: [], recentCalculators: [] };
   }
 }
 

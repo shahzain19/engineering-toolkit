@@ -26,7 +26,7 @@ export function ResultBox({ label, value, unit, highlight = false }: ResultBoxPr
       className={`
         relative rounded-sm p-3 border
         ${highlight
-          ? 'bg-[#ffffcc] dark:bg-[#333300] border-classic-border'
+          ? 'bg-[#ffffcc] border-classic-border'
           : 'bg-classic-input border-classic-border'}
       `}
     >

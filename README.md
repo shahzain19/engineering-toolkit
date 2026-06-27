@@ -1,10 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Engineering Toolkit
+
+A professional-grade, open-source engineering calculator suite built for electrical, mechanical, and general engineering workflows. 
+The application provides a clean, classic desktop software aesthetic, focusing on speed, accuracy, and ease of use.
+
+![Engineering Toolkit](./public/screenshot.png) *(Note: add screenshot here)*
+
+## Features
+
+- **Electrical Calculators:**
+  - Ohm's Law (V = I × R)
+  - Voltage Divider
+  - Resistor Color Code (4/5 Band)
+  - Power Calculator
+  - *More coming soon...*
+- **Mechanical Calculators:**
+  - Gear Ratio
+  - Torque Calculator
+  - Beam Bending Calculator
+- **Conversions & Materials:**
+  - Comprehensive Unit Converter (Length, Mass, Temp, Pressure, Area, Volume, Angle)
+  - Material Properties Reference
+- **Core Functionalities:**
+  - Clean, distraction-free "classic software" UI
+  - Favorites & Recently Used tools
+  - Dark/Light mode support
+  - 100% Client-side computation for instant results and privacy
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router, Client-side)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS (v4) with custom classic UI tokens
+- **Icons:** Lucide React
+- **State Management:** React Context API + LocalStorage
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+npm install
 npm run dev
 # or
 yarn dev
@@ -16,21 +51,22 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/src/calculators` - Contains the individual engineering calculator components.
+- `/src/components` - Shared UI components (Input, ResultBox, Sidebar, etc.).
+- `/src/views` - Main sections of the application (Dashboard, Electrical, Mechanical).
+- `/src/context` - Global application state management.
+- `/src/data` - Data registries for calculators and materials.
+- `/src/types` - TypeScript interfaces.
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions are welcome! If you have a specific engineering calculator you'd like to see, please follow the current structure:
+1. Create your component in `/src/calculators`.
+2. Register your calculator in `/src/data/calculators.ts`.
+3. Add it to the relevant category view (e.g., `/src/views/ElectricalPage.tsx`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open-source and available under the MIT License.

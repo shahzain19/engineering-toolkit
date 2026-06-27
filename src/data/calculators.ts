@@ -38,6 +38,15 @@ export const CALCULATORS: Calculator[] = [
     tags: ['power', 'watt', 'voltage', 'current'],
     featured: false,
   },
+  {
+    id: 'parallel-resistors',
+    title: 'Parallel Resistors',
+    description: 'Calculate equivalent resistance for resistors in parallel',
+    category: 'electrical',
+    icon: 'SplitSquareVertical',
+    tags: ['resistor', 'parallel', 'equivalent', 'ohms'],
+    featured: false,
+  },
   // Mechanical
   {
     id: 'gear-ratio',
@@ -64,6 +73,15 @@ export const CALCULATORS: Calculator[] = [
     category: 'mechanical',
     icon: 'Ruler',
     tags: ['beam', 'bending', 'stress', 'moment', 'structural'],
+    featured: false,
+  },
+  {
+    id: 'thermal-expansion',
+    title: 'Thermal Expansion',
+    description: 'Calculate linear thermal expansion from temperature change',
+    category: 'mechanical',
+    icon: 'TrendingUp',
+    tags: ['thermal', 'expansion', 'temperature', 'heat', 'strain'],
     featured: false,
   },
   // Conversions

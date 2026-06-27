@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { Sidebar } from '@/components/Sidebar';
 import { Navbar } from '@/components/Navbar';
-import { ThemeToggle } from '@/components/ThemeToggle';
 import { SearchBar } from '@/components/SearchBar';
 import { DashboardPage } from '@/views/DashboardPage';
 import { ElectricalPage } from '@/views/ElectricalPage';
@@ -42,9 +41,6 @@ export function AppShell() {
         <div className="hidden md:flex items-center gap-3 px-4 py-2 border-b border-classic-border bg-classic-panel flex-shrink-0 shadow-sm">
           <div className="flex-1 max-w-md">
             <SearchBar />
-          </div>
-          <div className="ml-auto">
-            <ThemeToggle />
           </div>
         </div>
 

@@ -20,7 +20,6 @@ export interface CalculationHistory {
 }
 
 export interface AppSettings {
-  theme: 'light' | 'dark' | 'system';
   favorites: string[];
   recentCalculators: string[];
 }
