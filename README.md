@@ -3,7 +3,7 @@
 A professional-grade, open-source engineering calculator suite built for electrical, mechanical, and general engineering workflows. 
 The application provides a clean, classic desktop software aesthetic, focusing on speed, accuracy, and ease of use.
 
-![Engineering Toolkit](./public/screenshot.png) *(Note: add screenshot here)*
+![Engineering Toolkit](./public/screenshot.png)
 
 ## Features
 
