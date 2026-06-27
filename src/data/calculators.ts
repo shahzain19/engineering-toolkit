@@ -1,0 +1,194 @@
+import type { Calculator, ConversionCategory } from '@/types';
+
+export const CALCULATORS: Calculator[] = [
+  // Electrical
+  {
+    id: 'ohms-law',
+    title: "Ohm's Law",
+    description: 'Calculate voltage, current, or resistance using V = I × R',
+    category: 'electrical',
+    icon: 'Zap',
+    tags: ['voltage', 'current', 'resistance', 'ohms', 'basic'],
+    featured: true,
+  },
+  {
+    id: 'voltage-divider',
+    title: 'Voltage Divider',
+    description: 'Calculate output voltage with two resistors: Vout = Vin × R2/(R1+R2)',
+    category: 'electrical',
+    icon: 'SplitSquareVertical',
+    tags: ['voltage', 'resistor', 'divider'],
+    featured: true,
+  },
+  {
+    id: 'resistor-color-code',
+    title: 'Resistor Color Code',
+    description: 'Decode 4-band or 5-band resistor color codes to find resistance value',
+    category: 'electrical',
+    icon: 'Palette',
+    tags: ['resistor', 'color', 'bands', 'tolerance'],
+    featured: true,
+  },
+  {
+    id: 'power-calculator',
+    title: 'Power Calculator',
+    description: 'Calculate power, voltage, or current using P = V × I',
+    category: 'electrical',
+    icon: 'Battery',
+    tags: ['power', 'watt', 'voltage', 'current'],
+    featured: false,
+  },
+  // Mechanical
+  {
+    id: 'gear-ratio',
+    title: 'Gear Ratio Calculator',
+    description: 'Compute gear ratio and output RPM from driver/driven gear teeth',
+    category: 'mechanical',
+    icon: 'Settings',
+    tags: ['gear', 'ratio', 'rpm', 'transmission'],
+    featured: true,
+  },
+  {
+    id: 'torque-calculator',
+    title: 'Torque Calculator',
+    description: 'Calculate torque from force and distance: τ = F × d',
+    category: 'mechanical',
+    icon: 'RotateCcw',
+    tags: ['torque', 'force', 'lever', 'moment'],
+    featured: false,
+  },
+  {
+    id: 'beam-calculator',
+    title: 'Beam Bending Calculator',
+    description: 'Simple beam bending moment and stress analysis',
+    category: 'mechanical',
+    icon: 'Ruler',
+    tags: ['beam', 'bending', 'stress', 'moment', 'structural'],
+    featured: false,
+  },
+  // Conversions
+  {
+    id: 'unit-converter',
+    title: 'Unit Converter',
+    description: 'Convert between length, mass, temperature, pressure, area, volume & angle',
+    category: 'conversions',
+    icon: 'ArrowLeftRight',
+    tags: ['convert', 'units', 'length', 'mass', 'temperature', 'pressure', 'area', 'volume'],
+    featured: true,
+  },
+];
+
+export const RESISTOR_COLORS: Record<string, { value: number | null; multiplier: number; tolerance: string; hex: string }> = {
+  black:  { value: 0, multiplier: 1,         tolerance: '',      hex: '#1a1a1a' },
+  brown:  { value: 1, multiplier: 10,        tolerance: '±1%',   hex: '#7B4F2E' },
+  red:    { value: 2, multiplier: 100,       tolerance: '±2%',   hex: '#C0392B' },
+  orange: { value: 3, multiplier: 1000,      tolerance: '',      hex: '#E67E22' },
+  yellow: { value: 4, multiplier: 10000,     tolerance: '',      hex: '#F1C40F' },
+  green:  { value: 5, multiplier: 100000,    tolerance: '±0.5%', hex: '#27AE60' },
+  blue:   { value: 6, multiplier: 1000000,   tolerance: '±0.25%', hex: '#2980B9' },
+  violet: { value: 7, multiplier: 10000000,  tolerance: '±0.1%', hex: '#8E44AD' },
+  grey:   { value: 8, multiplier: 100000000, tolerance: '±0.05%', hex: '#7F8C8D' },
+  white:  { value: 9, multiplier: 1000000000, tolerance: '',     hex: '#ECF0F1' },
+  gold:   { value: null, multiplier: 0.1,   tolerance: '±5%',   hex: '#D4AC0D' },
+  silver: { value: null, multiplier: 0.01,  tolerance: '±10%',  hex: '#BFC9CA' },
+};
+
+export const CONVERSION_CATEGORIES: ConversionCategory[] = [
+  {
+    name: 'Length',
+    baseUnit: 'm',
+    units: [
+      { label: 'Millimeter (mm)', factor: 0.001 },
+      { label: 'Centimeter (cm)', factor: 0.01 },
+      { label: 'Meter (m)', factor: 1 },
+      { label: 'Kilometer (km)', factor: 1000 },
+      { label: 'Inch (in)', factor: 0.0254 },
+      { label: 'Foot (ft)', factor: 0.3048 },
+      { label: 'Yard (yd)', factor: 0.9144 },
+      { label: 'Mile (mi)', factor: 1609.344 },
+    ],
+  },
+  {
+    name: 'Mass',
+    baseUnit: 'kg',
+    units: [
+      { label: 'Milligram (mg)', factor: 0.000001 },
+      { label: 'Gram (g)', factor: 0.001 },
+      { label: 'Kilogram (kg)', factor: 1 },
+      { label: 'Metric Ton (t)', factor: 1000 },
+      { label: 'Ounce (oz)', factor: 0.0283495 },
+      { label: 'Pound (lb)', factor: 0.453592 },
+      { label: 'Stone (st)', factor: 6.35029 },
+    ],
+  },
+  {
+    name: 'Temperature',
+    baseUnit: 'K',
+    units: [
+      { label: 'Celsius (°C)', factor: 1, offset: 273.15 },
+      { label: 'Fahrenheit (°F)', factor: 5 / 9, offset: 459.67 * (5 / 9) },
+      { label: 'Kelvin (K)', factor: 1, offset: 0 },
+    ],
+  },
+  {
+    name: 'Pressure',
+    baseUnit: 'Pa',
+    units: [
+      { label: 'Pascal (Pa)', factor: 1 },
+      { label: 'Kilopascal (kPa)', factor: 1000 },
+      { label: 'Megapascal (MPa)', factor: 1000000 },
+      { label: 'Bar (bar)', factor: 100000 },
+      { label: 'PSI (psi)', factor: 6894.76 },
+      { label: 'Atmosphere (atm)', factor: 101325 },
+      { label: 'mmHg (torr)', factor: 133.322 },
+    ],
+  },
+  {
+    name: 'Area',
+    baseUnit: 'm²',
+    units: [
+      { label: 'mm² ', factor: 0.000001 },
+      { label: 'cm²', factor: 0.0001 },
+      { label: 'm²', factor: 1 },
+      { label: 'km²', factor: 1000000 },
+      { label: 'in²', factor: 0.00064516 },
+      { label: 'ft²', factor: 0.092903 },
+      { label: 'Acre', factor: 4046.86 },
+      { label: 'Hectare (ha)', factor: 10000 },
+    ],
+  },
+  {
+    name: 'Volume',
+    baseUnit: 'm³',
+    units: [
+      { label: 'Milliliter (mL)', factor: 0.000001 },
+      { label: 'Liter (L)', factor: 0.001 },
+      { label: 'Cubic Meter (m³)', factor: 1 },
+      { label: 'Cubic Inch (in³)', factor: 0.0000163871 },
+      { label: 'Cubic Foot (ft³)', factor: 0.0283168 },
+      { label: 'US Fluid Ounce (fl oz)', factor: 0.0000295735 },
+      { label: 'US Gallon (gal)', factor: 0.00378541 },
+    ],
+  },
+  {
+    name: 'Angle',
+    baseUnit: 'rad',
+    units: [
+      { label: 'Degree (°)', factor: Math.PI / 180 },
+      { label: 'Radian (rad)', factor: 1 },
+      { label: 'Gradian (grad)', factor: Math.PI / 200 },
+      { label: 'Revolution (rev)', factor: 2 * Math.PI },
+      { label: 'Arcminute (\')', factor: Math.PI / 10800 },
+      { label: 'Arcsecond (")', factor: Math.PI / 648000 },
+    ],
+  },
+];
+
+export const BEAM_MATERIALS: Record<string, { name: string; elasticModulus: number; yieldStrength: number; unit: string }> = {
+  steel:     { name: 'Structural Steel',  elasticModulus: 200e9, yieldStrength: 250e6, unit: 'Pa' },
+  aluminum:  { name: 'Aluminum (6061)',   elasticModulus: 68.9e9, yieldStrength: 276e6, unit: 'Pa' },
+  concrete:  { name: 'Concrete (C30)',    elasticModulus: 30e9, yieldStrength: 30e6, unit: 'Pa' },
+  wood:      { name: 'Douglas Fir Wood',  elasticModulus: 13e9, yieldStrength: 38e6, unit: 'Pa' },
+  titanium:  { name: 'Titanium (Ti-6Al-4V)', elasticModulus: 114e9, yieldStrength: 880e6, unit: 'Pa' },
+  copper:    { name: 'Copper',            elasticModulus: 110e9, yieldStrength: 70e6, unit: 'Pa' },
+};
