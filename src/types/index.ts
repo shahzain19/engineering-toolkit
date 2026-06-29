@@ -1,4 +1,28 @@
-export type Category = 'electrical' | 'mechanical' | 'conversions' | 'materials';
+// types/index.ts — shared TypeScript types for the entire app.
+//
+// Category must be kept in sync with:
+//   - src/data/calculators.ts  (CALCULATORS entries)
+//   - src/components/CalculatorCard.tsx  (sectionMap)
+//   - src/components/Sidebar.tsx / Navbar.tsx  (nav items)
+//
+// SidebarSection must include every category plus dashboard/favorites/settings.
+
+export type Category =
+  | 'electrical'
+  | 'mechanical'
+  | 'conversions'
+  | 'materials'
+  | 'robotics'
+  | 'manufacturing'
+  | 'electronics'
+  | 'mathematics'
+  | 'physics'
+  | 'aerospace'
+  | 'civil'
+  | 'rf'
+  | 'programming'
+  | 'reference'
+  | 'cad';
 
 export interface Calculator {
   id: string;
@@ -24,7 +48,25 @@ export interface AppSettings {
   recentCalculators: string[];
 }
 
-export type SidebarSection = 'dashboard' | 'electrical' | 'mechanical' | 'conversions' | 'materials' | 'favorites' | 'settings';
+export type SidebarSection =
+  | 'dashboard'
+  | 'electrical'
+  | 'mechanical'
+  | 'conversions'
+  | 'materials'
+  | 'robotics'
+  | 'manufacturing'
+  | 'electronics'
+  | 'mathematics'
+  | 'physics'
+  | 'aerospace'
+  | 'civil'
+  | 'rf'
+  | 'programming'
+  | 'reference'
+  | 'cad'
+  | 'favorites'
+  | 'settings';
 
 export interface ResistorBand {
   color: string;

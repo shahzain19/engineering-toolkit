@@ -1,3 +1,7 @@
+// AppContext — global state for the entire app.
+// Persists favorites + recents to localStorage; holds transient UI state
+// (activeSection, activeCalculator, sidebarOpen, searchQuery) in memory.
+// All calculator components read/write through useApp() — no prop drilling.
 'use client';
 
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';

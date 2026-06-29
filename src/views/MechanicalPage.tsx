@@ -8,6 +8,7 @@ import { GearRatioCalculator } from '@/calculators/GearRatio';
 import { TorqueCalculator } from '@/calculators/TorqueCalculator';
 import { BeamCalculator } from '@/calculators/BeamCalculator';
 import { ThermalExpansion } from '@/calculators/ThermalExpansion';
+import { FactorOfSafetyCalculator } from '@/calculators/FactorOfSafety';
 import { useApp } from '@/context/AppContext';
 
 const mechCalcs = CALCULATORS.filter((c) => c.category === 'mechanical');
@@ -17,6 +18,7 @@ const calcMap: Record<string, React.ReactNode> = {
   'torque-calculator': <TorqueCalculator />,
   'beam-calculator': <BeamCalculator />,
   'thermal-expansion': <ThermalExpansion />,
+  'factor-of-safety': <FactorOfSafetyCalculator />,
 };
 
 export function MechanicalPage() {

@@ -1,3 +1,13 @@
+// calculators.ts — central registry for every calculator in the app.
+//
+// To add a new calculator:
+//   1. Add an entry to CALCULATORS with a unique id, category, and icon name.
+//   2. Create src/calculators/MyCalc.tsx following the standard anatomy.
+//   3. Import it in the relevant view (e.g. ElectricalPage.tsx) and add it to calcMap.
+//
+// Categories drive sidebar grouping and CalculatorCard routing.
+// The icon string must match a key in CalculatorCard's iconMap (lucide-react names).
+
 import type { Calculator, ConversionCategory } from '@/types';
 
 export const CALCULATORS: Calculator[] = [
@@ -93,6 +103,272 @@ export const CALCULATORS: Calculator[] = [
     icon: 'ArrowLeftRight',
     tags: ['convert', 'units', 'length', 'mass', 'temperature', 'pressure', 'area', 'volume'],
     featured: true,
+  },
+  {
+    id: 'engineering-prefix',
+    title: 'Engineering Prefix Converter',
+    description: 'Convert between SI prefixes: nano, micro, milli, kilo, mega, giga and more',
+    category: 'conversions',
+    icon: 'Hash',
+    tags: ['prefix', 'si', 'nano', 'micro', 'milli', 'kilo', 'mega', 'giga', 'engineering'],
+    featured: false,
+  },
+  // Electrical - new
+  {
+    id: 'led-resistor',
+    title: 'LED Resistor Calculator',
+    description: 'Calculate the correct current-limiting resistor value for an LED circuit',
+    category: 'electrical',
+    icon: 'Lightbulb',
+    tags: ['led', 'resistor', 'current', 'forward voltage', 'limiting'],
+    featured: false,
+  },
+  {
+    id: 'voltage-drop',
+    title: 'Voltage Drop Calculator',
+    description: 'Calculate voltage drop across a wire based on length, gauge, and current',
+    category: 'electrical',
+    icon: 'TrendingDown',
+    tags: ['voltage drop', 'wire', 'awg', 'resistance', 'cable'],
+    featured: false,
+  },
+  // Mechanical - new
+  {
+    id: 'factor-of-safety',
+    title: 'Factor of Safety Calculator',
+    description: 'Calculate factor of safety from ultimate strength and working stress',
+    category: 'mechanical',
+    icon: 'ShieldCheck',
+    tags: ['safety', 'factor', 'stress', 'strength', 'structural'],
+    featured: false,
+  },
+  // Robotics
+  {
+    id: 'wheel-rpm-speed',
+    title: 'Wheel RPM ↔ Speed Converter',
+    description: 'Convert between wheel RPM and linear speed using wheel diameter',
+    category: 'robotics',
+    icon: 'Gauge',
+    tags: ['wheel', 'rpm', 'speed', 'velocity', 'robot', 'drive'],
+    featured: false,
+  },
+  {
+    id: 'differential-drive',
+    title: 'Differential Drive Calculator',
+    description: 'Calculate turn radius, wheel speeds, and angular velocity for differential drive robots',
+    category: 'robotics',
+    icon: 'GitFork',
+    tags: ['differential', 'drive', 'robot', 'turn', 'radius', 'angular'],
+    featured: false,
+  },
+  // Manufacturing
+  {
+    id: 'drill-speed',
+    title: 'Drill Speed Calculator',
+    description: 'Calculate optimal drill RPM from material, drill diameter, and cutting speed',
+    category: 'manufacturing',
+    icon: 'Drill',
+    tags: ['drill', 'rpm', 'cutting speed', 'sfm', 'material', 'cnc'],
+    featured: false,
+  },
+  {
+    id: 'tap-drill-size',
+    title: 'Tap Drill Size Calculator',
+    description: 'Find the correct tap drill size for a given thread specification',
+    category: 'manufacturing',
+    icon: 'Wrench',
+    tags: ['tap', 'drill', 'thread', 'tapping', 'hole', 'metric', 'unc', 'unf'],
+    featured: false,
+  },
+  // Electronics
+  {
+    id: 'pwm-frequency',
+    title: 'PWM Frequency Calculator',
+    description: 'Calculate PWM frequency, period, and duty cycle parameters',
+    category: 'electronics',
+    icon: 'Activity',
+    tags: ['pwm', 'frequency', 'duty cycle', 'period', 'pulse', 'timer'],
+    featured: false,
+  },
+  {
+    id: 'number-base-converter',
+    title: 'Binary ↔ Decimal ↔ Hex Converter',
+    description: 'Convert numbers between binary, decimal, hexadecimal, and octal bases',
+    category: 'electronics',
+    icon: 'Binary',
+    tags: ['binary', 'decimal', 'hex', 'hexadecimal', 'octal', 'base', 'convert'],
+    featured: false,
+  },
+  // Mathematics
+  {
+    id: 'matrix-calculator',
+    title: 'Matrix Calculator',
+    description: 'Perform matrix addition, subtraction, multiplication, determinant, and transpose',
+    category: 'mathematics',
+    icon: 'Grid3x3',
+    tags: ['matrix', 'linear algebra', 'determinant', 'transpose', 'multiply'],
+    featured: false,
+  },
+  {
+    id: 'equation-solver',
+    title: 'Equation Solver',
+    description: 'Solve linear and quadratic equations with step-by-step solutions',
+    category: 'mathematics',
+    icon: 'FunctionSquare',
+    tags: ['equation', 'quadratic', 'linear', 'solve', 'roots', 'algebra'],
+    featured: false,
+  },
+  // Materials - new
+  {
+    id: 'material-weight',
+    title: 'Material Weight Calculator',
+    description: 'Calculate the weight of standard material shapes (bar, tube, sheet)',
+    category: 'materials',
+    icon: 'Weight',
+    tags: ['weight', 'mass', 'material', 'steel', 'aluminum', 'bar', 'sheet'],
+    featured: false,
+  },
+  {
+    id: 'density-lookup',
+    title: 'Density Lookup Table',
+    description: 'Look up density values for common engineering materials',
+    category: 'materials',
+    icon: 'Table',
+    tags: ['density', 'material', 'lookup', 'reference', 'kg/m3'],
+    featured: false,
+  },
+  // Physics
+  {
+    id: 'projectile-motion',
+    title: 'Projectile Motion Calculator',
+    description: 'Calculate range, max height, and time of flight for projectile motion',
+    category: 'physics',
+    icon: 'TrendingUp',
+    tags: ['projectile', 'motion', 'range', 'height', 'velocity', 'angle', 'physics'],
+    featured: false,
+  },
+  {
+    id: 'kinetic-potential-energy',
+    title: 'Kinetic & Potential Energy Calculator',
+    description: 'Calculate kinetic energy (½mv²) and gravitational potential energy (mgh)',
+    category: 'physics',
+    icon: 'Zap',
+    tags: ['kinetic', 'potential', 'energy', 'mass', 'velocity', 'height', 'physics'],
+    featured: false,
+  },
+  // Aerospace
+  {
+    id: 'rocket-equation',
+    title: 'Rocket Equation Calculator',
+    description: 'Calculate delta-v using the Tsiolkovsky rocket equation',
+    category: 'aerospace',
+    icon: 'Rocket',
+    tags: ['rocket', 'delta-v', 'tsiolkovsky', 'isp', 'propellant', 'aerospace'],
+    featured: false,
+  },
+  {
+    id: 'mach-number',
+    title: 'Mach Number Calculator',
+    description: 'Calculate Mach number, airspeed, and speed of sound at altitude',
+    category: 'aerospace',
+    icon: 'Wind',
+    tags: ['mach', 'airspeed', 'sound', 'supersonic', 'altitude', 'aerospace'],
+    featured: false,
+  },
+  // Civil
+  {
+    id: 'concrete-volume',
+    title: 'Concrete Volume Calculator',
+    description: 'Calculate concrete volume and material quantities for slabs, columns, and footings',
+    category: 'civil',
+    icon: 'Building',
+    tags: ['concrete', 'volume', 'slab', 'column', 'footing', 'cement', 'civil'],
+    featured: false,
+  },
+  {
+    id: 'rebar-weight',
+    title: 'Rebar Weight Calculator',
+    description: 'Calculate the weight of rebar (reinforcing bar) from size, length, and quantity',
+    category: 'civil',
+    icon: 'Layers',
+    tags: ['rebar', 'weight', 'reinforcing', 'steel', 'bar', 'civil', 'structural'],
+    featured: false,
+  },
+  // RF
+  {
+    id: 'wavelength-calculator',
+    title: 'Wavelength Calculator',
+    description: 'Calculate wavelength, frequency, or wave speed for electromagnetic waves',
+    category: 'rf',
+    icon: 'Radio',
+    tags: ['wavelength', 'frequency', 'rf', 'electromagnetic', 'wave', 'antenna'],
+    featured: false,
+  },
+  {
+    id: 'dbm-watt-converter',
+    title: 'dBm ↔ Watt Converter',
+    description: 'Convert between dBm and milliwatts/watts for RF power measurements',
+    category: 'rf',
+    icon: 'Signal',
+    tags: ['dbm', 'watt', 'power', 'rf', 'decibel', 'milliwatt', 'convert'],
+    featured: false,
+  },
+  // Programming
+  {
+    id: 'crc-checksum',
+    title: 'CRC / Checksum Calculator',
+    description: 'Calculate CRC-8, CRC-16, CRC-32, MD5, and SHA checksums for data strings',
+    category: 'programming',
+    icon: 'Hash',
+    tags: ['crc', 'checksum', 'hash', 'crc32', 'crc16', 'integrity', 'data'],
+    featured: false,
+  },
+  {
+    id: 'uuid-generator',
+    title: 'UUID Generator',
+    description: 'Generate UUIDs (v4) and other unique identifiers for use in software development',
+    category: 'programming',
+    icon: 'Fingerprint',
+    tags: ['uuid', 'guid', 'unique', 'id', 'generator', 'v4', 'identifier'],
+    featured: false,
+  },
+  // Reference
+  {
+    id: 'awg-wire-table',
+    title: 'AWG Wire Table',
+    description: 'Reference table for American Wire Gauge sizes, diameter, resistance, and current capacity',
+    category: 'reference',
+    icon: 'Cable',
+    tags: ['awg', 'wire', 'gauge', 'diameter', 'resistance', 'current', 'reference'],
+    featured: false,
+  },
+  {
+    id: 'si-prefix-reference',
+    title: 'SI Prefix Reference',
+    description: 'Complete reference table for all SI prefixes from yocto to yotta',
+    category: 'reference',
+    icon: 'BookOpen',
+    tags: ['si', 'prefix', 'unit', 'metric', 'reference', 'nano', 'micro', 'mega'],
+    featured: false,
+  },
+  // CAD
+  {
+    id: 'bolt-circle',
+    title: 'Bolt Circle Calculator',
+    description: 'Calculate X/Y coordinates for bolt holes on a bolt circle pattern (PCD)',
+    category: 'cad',
+    icon: 'Circle',
+    tags: ['bolt', 'circle', 'pcd', 'pitch circle', 'cad', 'holes', 'coordinates'],
+    featured: false,
+  },
+  {
+    id: 'polygon-generator',
+    title: 'Polygon Generator',
+    description: 'Calculate vertices, side lengths, and area of regular polygons',
+    category: 'cad',
+    icon: 'Pentagon',
+    tags: ['polygon', 'regular', 'vertices', 'hexagon', 'cad', 'geometry'],
+    featured: false,
   },
 ];
 

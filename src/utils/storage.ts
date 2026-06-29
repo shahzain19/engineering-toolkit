@@ -1,3 +1,8 @@
+// storage.ts — all localStorage access lives here.
+// Every function is SSR-safe (window guard).
+// History is capped at 50 entries; recents at 8.
+// formatNumber handles the switch to exponential notation for very large/small values.
+
 import type { CalculationHistory, AppSettings } from '@/types';
 
 const HISTORY_KEY = 'eng_toolkit_history';

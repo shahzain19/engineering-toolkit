@@ -9,6 +9,8 @@ import { VoltageDividerCalculator } from '@/calculators/VoltageDivider';
 import { ResistorColorCodeCalculator } from '@/calculators/ResistorColorCode';
 import { PowerCalculator } from '@/calculators/PowerCalculator';
 import { ParallelResistors } from '@/calculators/ParallelResistors';
+import { LEDResistorCalculator } from '@/calculators/LEDResistor';
+import { VoltageDropCalculator } from '@/calculators/VoltageDrop';
 import { useApp } from '@/context/AppContext';
 
 const electricalCalcs = CALCULATORS.filter((c) => c.category === 'electrical');
@@ -19,6 +21,8 @@ const calcMap: Record<string, React.ReactNode> = {
   'resistor-color-code': <ResistorColorCodeCalculator />,
   'power-calculator': <PowerCalculator />,
   'parallel-resistors': <ParallelResistors />,
+  'led-resistor': <LEDResistorCalculator />,
+  'voltage-drop': <VoltageDropCalculator />,
 };
 
 export function ElectricalPage() {
